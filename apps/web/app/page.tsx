@@ -1,7 +1,13 @@
-export default function Home() {
-  return (
-    <div className="text-white">
-      Hello World! The deployment works!
-    </div>
-  );
+import { prisma } from "@repo/db/prisma"
+
+export default async function Home() {
+    const user = await prisma.user.findFirst();
+
+    return (
+      <div className="text-white">
+          First name: 
+        {user?.username}
+        {user?.password}
+      </div>
+    );
 }
