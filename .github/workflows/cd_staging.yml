@@ -13,7 +13,7 @@ jobs:
         run: |
           echo "${{ secrets.PRIVATE_SSH_KEY }}" > ~/ssh_key
           chmod 600 ~/ssh_key
-          ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@13.235.8.146 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@13.235.8.146 '
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd ci-next-app/ && git pull
@@ -22,6 +22,6 @@ jobs:
             pm2 restart fe-server
             pm2 restart http-server
             pm2 restart ws-server
-            EOF
+          '
             
             
