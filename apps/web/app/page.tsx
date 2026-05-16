@@ -4,7 +4,7 @@ export default async function Home() {
     const user = await prisma.user.findFirst();
 
     return (
-      <div>
+      <div className = "color: white">
           First name: 
         {user?.username}
         {user?.password}
